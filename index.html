@@ -7,10 +7,57 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <title>Multi-step form</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Multi step form</title>
 </head>
 
-<body>
+<body class="body">
+  <header class="header">
+    <img class="header__img" src="assets/images/bg-sidebar-mobile.svg" alt="slider bar mobile">
+  </header>
+
+  <main class="main">
+    <div class="absolute">
+      <header class="main__header">
+        <div class="main__header__progress">
+          <div class="main__header__progress__step">1</div>
+          <div class="main__header__progress__step">2</div>
+          <div class="main__header__progress__step">3</div>
+          <div class="main__header__progress__step">4</div>
+        </div>
+      </header>
+
+      <section class="main__section">
+        <h3 class="main__section__title">Personal info</h3>
+        <p class="main__section__desc-section">Please provide your name, email address, and phone number.</p>
+
+        <form class="main__section__form">
+          <div class="main__section__form__input-container">
+            <label for="name" class="main__section__form__input-container__label">Name</label>
+            <input class="main__section__form__input-container__input" type="text" placeholder="e.g. Stephen King">
+          </div>
+          <div class="main__section__form__input-container">
+            <label for="email" class="main__section__form__input-container__label">Email Address</label>
+            <input class="main__section__form__input-container__input" type="text"
+              placeholder="e.g. stephenking@lorem.com">
+          </div>
+          <div class="main__section__form__input-container">
+            <label for="phone" class="main__section__form__input-container__label">Phone Number</label>
+            <input class="main__section__form__input-container__input" type="text" placeholder="e.g. +1 234 567 890">
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__submit-container">
+      <button class="footer__submit-container__btn" type="submit">Next Step</button>
+    </div>
+  </footer>
   <script src="js/main.js"></script>
 </body>
 
