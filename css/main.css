@@ -17,7 +17,7 @@
   width: 100vw;
   background-color: var(--White);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .header {
