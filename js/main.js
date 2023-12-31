@@ -1,5 +1,8 @@
 const formStep1 = document.getElementById('form-step-1');
-const btnNextStep = document.querySelector('.footer__submit-container__btn');
+const btnNextStep = document.querySelector('.footer__submit-container__btn__next');
+const textBack = document.querySelector(".footer__submit-container__back");
+
+const footerContent = document.querySelector(".footer__submit-container");
 
 const nameContainer = document.getElementById('name-container');
 const nameInput = document.getElementById('name-input');
@@ -9,10 +12,6 @@ const emailInput = document.getElementById('email-input');
 
 const phoneContainer = document.getElementById('phone-container');
 const phoneInput = document.getElementById('phone-input');
-
-formStep1.addEventListener('submit', (e) => {
-  e.preventDefault();
-});
 
 const removeErrorState = () => {
   const textsErrors = document.querySelectorAll('.text-error');
@@ -31,7 +30,31 @@ const errorState = (container, input, text) => {
   container.appendChild(textError);
 };
 
-btnNextStep.addEventListener('click', () => {
+formStep1.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
+
+let stepNumber = 1;
+
+const stepState = () => {
+  const totalSteps = 4;
+  const stepClass = "main__header__progress__step";
+  const stepsClassActive = "main__header__progress__step-active";
+
+  for (let i = 1; i <= totalSteps; i++) {
+    const step = document.getElementById(i);
+
+    if (i === stepNumber) {
+      step.classList.replace(stepClass, stepsClassActive);
+    } else {
+      step.classList.replace(stepsClassActive, stepClass);
+    }
+  }
+}
+
+stepState();
+
+const stepOne = () => {
   if (nameInput.value === '') {
     errorState(nameContainer, nameInput, 'Name cannot be empty');
   } else if (/\d+/.test(nameInput.value)) {
@@ -44,9 +67,24 @@ btnNextStep.addEventListener('click', () => {
     errorState(phoneContainer, phoneInput, 'Phone number cannot be empty');
   } else if (!/\d+/.test(phoneInput.value)) {
     errorState(phoneContainer, phoneInput, 'Phone number cannot contain letters');
-  } else if (phoneInput.value.length > 4 || phoneInput.value.length < 15) {
-    errorState(phoneContainer, phoneInput, 'Phone number invalid');
   } else {
-    
+    return true;
   }
-});
+
+  return false;
+}
+
+if (stepNumber === 1) {
+  textBack.style.visibility = "hidden";
+}
+
+btnNextStep.addEventListener("click", () => {
+  if (stepNumber === 1) {
+    if (stepOne()) {
+      removeErrorState();
+      textBack.style.visibility = "visible";
+      stepNumber = stepNumber + 1;
+      stepState();
+    }
+  }
+})
