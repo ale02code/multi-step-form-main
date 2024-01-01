@@ -81,7 +81,7 @@ if (stepNumber === 1) {
 let stepIsVisible = 1;
 
 const stepVisibility = () => {
-  const maxSteps = 2;
+  const maxSteps = 4;
   const stepNotVisibleClass = "isNotVisible";
 
   for (let i = 1; i <= maxSteps; i++) {
@@ -108,7 +108,6 @@ const backVisible = () => {
 }
 
 btnNextStep.addEventListener("click", () => {
-
   if (stepNumber === 1) {
     if (stepOne()) {
       removeErrorState();
@@ -118,6 +117,14 @@ btnNextStep.addEventListener("click", () => {
       stepIsVisible = stepIsVisible + 1;
       stepVisibility();
     }
+  } else if (stepNumber < 4) {
+    stepNumber = stepNumber + 1;
+    stepState();
+    stepIsVisible = stepIsVisible + 1;
+    stepVisibility();
+    backVisible();
+  } else {
+    console.log(stepIsVisible, stepNumber);
   }
 });
 
