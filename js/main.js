@@ -78,13 +78,47 @@ if (stepNumber === 1) {
   textBack.style.visibility = "hidden";
 }
 
+let stepIsVisible = 1;
+
+const stepVisibility = () => {
+  const maxSteps = 2;
+  const stepNotVisibleClass = "isNotVisible";
+
+  for (let i = 1; i <= maxSteps; i++) {
+    const stepVisible = document.querySelector(`.step-${i}`);
+
+    console.log(`.step-${i}:`, stepVisible);
+
+    if (i === stepIsVisible) {
+      stepVisible.classList.remove(stepNotVisibleClass);
+    } else {
+      stepVisible.classList.add(stepNotVisibleClass);
+    }
+  }
+};
+
+stepVisibility();
+
 btnNextStep.addEventListener("click", () => {
+
   if (stepNumber === 1) {
+    // !TODO create a function to back button visibility
+    textBack.style.visibility = "hidden";
+
     if (stepOne()) {
       removeErrorState();
       textBack.style.visibility = "visible";
       stepNumber = stepNumber + 1;
       stepState();
+      stepIsVisible = stepIsVisible + 1;
+      stepVisibility();
     }
   }
+});
+
+textBack.addEventListener("click", () => {
+  stepNumber = stepNumber - 1;
+  stepState();
+  stepIsVisible = stepIsVisible - 1;
+  stepVisibility();
 })

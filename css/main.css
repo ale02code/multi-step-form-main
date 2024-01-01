@@ -192,3 +192,7 @@
 .text-error {
   color: red;
 }
+
+.isNotVisible {
+  display: none;
+}
