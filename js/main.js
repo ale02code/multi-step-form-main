@@ -99,12 +99,17 @@ const stepVisibility = () => {
 
 stepVisibility();
 
+const backVisible = () => {
+  if (stepIsVisible === 1) {
+    textBack.style.visibility = "hidden";
+  } else {
+    textBack.style.visibility = "visible";
+  }
+}
+
 btnNextStep.addEventListener("click", () => {
 
   if (stepNumber === 1) {
-    // !TODO create a function to back button visibility
-    textBack.style.visibility = "hidden";
-
     if (stepOne()) {
       removeErrorState();
       textBack.style.visibility = "visible";
@@ -121,4 +126,5 @@ textBack.addEventListener("click", () => {
   stepState();
   stepIsVisible = stepIsVisible - 1;
   stepVisibility();
+  backVisible();
 })
