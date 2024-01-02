@@ -20,42 +20,82 @@
   </header>
 
   <main class="main">
-    <div class="absolute">
-      <header class="main__header">
-        <div class="main__header__progress">
-          <div class="main__header__progress__step" id="1">1</div>
-          <div class="main__header__progress__step" id="2">2</div>
-          <div class="main__header__progress__step" id="3">3</div>
-          <div class="main__header__progress__step" id="4">4</div>
+    <div class="main__step-container">
+      <header class="main__step-container__header">
+        <div class="main__step-container__progress">
+          <div class="main__step-container__progress__step" id="1">1</div>
+          <div class="main__step-container__progress__step" id="2">2</div>
+          <div class="main__step-container__progress__step" id="3">3</div>
+          <div class="main__step-container__progress__step" id="4">4</div>
         </div>
       </header>
+
       <div class="step-1">
-        <section class="main__section">
-          <h3 class="main__section__title">Personal info</h3>
-          <p class="main__section__desc-section">Please provide your name, email address, and phone number.</p>
+        <h3 class="step__title">Personal info</h3>
+        <p class="step__desc">Please provide your name, email address, and phone number.</p>
 
-          <form class="main__section__form" id="form-step-1">
-            <div class="main__section__form__input-container" id="name-container">
-              <label for="name" class="main__section__form__input-container__label">Name</label>
-              <input class="main__section__form__input-container__input" type="text" placeholder="e.g. Stephen King"
-                id="name-input">
-            </div>
-            <div class="main__section__form__input-container" id="email-container">
-              <label for="email" class="main__section__form__input-container__label">Email Address</label>
-              <input class="main__section__form__input-container__input" type="text"
-                placeholder="e.g. stephenking@lorem.com" id="email-input">
-            </div>
-            <div class="main__section__form__input-container" id="phone-container">
-              <label for="phone" class="main__section__form__input-container__label">Phone Number</label>
-              <input class="main__section__form__input-container__input" type="text" placeholder="e.g. +1 234 567 890"
-                id="phone-input">
-            </div>
-          </form>
-        </section>
-      </div>
-      <div class="step-2" style="width: 200px; height: 200px; background-color: #776279;">
+        <form class="step-1__form" id="form-step-1">
+          <div class="step-1__form__input-container" id="name-container">
+            <label for="name" class="step-1__form__input-container__label">Name</label>
+            <input class="step-1__form__input-container__input" type="text" placeholder="e.g. Stephen King"
+              id="name-input">
+          </div>
 
+          <div class="step-1__form__input-container" id="email-container">
+            <label for="email" class="step-1__form__input-container__label">Email Address</label>
+            <input class="step-1__form__input-container__input" type="text" placeholder="e.g. stephenking@lorem.com"
+              id="email-input">
+          </div>
+
+          <div class="step-1__form__input-container" id="phone-container">
+            <label for="phone" class="step-1__form__input-container__label">Phone Number</label>
+            <input class="step-1__form__input-container__input" type="text" placeholder="e.g. +1 234 567 890"
+              id="phone-input">
+          </div>
+        </form>
       </div>
+
+      <section class="step-2">
+        <h3 class="step__title">Select your plan</h3>
+        <p class="step__desc">You have the option of monthly or yearly billing</p>
+
+        <div class="options-play">
+          <figure>
+            <img src="assets/images/icon-arcade.svg" alt="Arcade Icon" title="Arcade">
+          </figure>
+          <div class="options-play__text">
+            <strong class="options-play__text__title">Arcade</strong>
+            <p class="options-play__text__arcade-price"></p>
+            <p class="options-play__text__months-free-invisible">2 months free</p>
+          </div>
+        </div>
+        <div class="options-play">
+          <figure>
+            <img src="assets/images/icon-advanced.svg" alt="Advanced Icon" title="Advanced">
+          </figure>
+          <div class="options-play__text">
+            <strong class="options-play__text__title">Advanced</strong>
+            <p class="options-play__text__advanced-price"></p>
+            <p class="options-play__text__months-free-invisible">2 months free</p>
+          </div>
+        </div>
+        <div class="options-play">
+          <figure>
+            <img src="assets/images/icon-pro.svg" alt="Pro Icon" title="Pro">
+          </figure>
+          <div class="options-play__text">
+            <strong class="options-play__text__title">Pro</strong>
+            <p class="options-play__text__pro-price"></p>
+            <p class="options-play__text__months-free-invisible">2 months free</p>
+          </div>
+        </div>
+
+        <div class="slider-pay">
+          <p class="monthly" id="monthly">Monthly</p>
+          <input type="range" id="method-pay" max="1" value="0">
+          <p class="yearly-activate" id="yearly">Yearly</p>
+        </div>
+      </section>
       <div class="step-3" style="width: 200px; height: 200px; background-color: #a2f1f4;">
 
       </div>
@@ -72,6 +112,7 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+  <script src="js/price.js"></script>
 </body>
 
 </html>

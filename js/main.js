@@ -34,12 +34,12 @@ formStep1.addEventListener('submit', (e) => {
   e.preventDefault();
 });
 
-let stepNumber = 1;
+let stepNumber = 2;
 
 const stepState = () => {
   const totalSteps = 4;
-  const stepClass = "main__header__progress__step";
-  const stepsClassActive = "main__header__progress__step-active";
+  const stepClass = "main__step-container__progress__step";
+  const stepsClassActive = "main__step-container__progress__step-active";
 
   for (let i = 1; i <= totalSteps; i++) {
     const step = document.getElementById(i);
@@ -78,7 +78,7 @@ if (stepNumber === 1) {
   textBack.style.visibility = "hidden";
 }
 
-let stepIsVisible = 1;
+let stepIsVisible = 2;
 
 const stepVisibility = () => {
   const maxSteps = 4;
