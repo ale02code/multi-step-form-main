@@ -13,6 +13,8 @@ const emailInput = document.getElementById('email-input');
 const phoneContainer = document.getElementById('phone-container');
 const phoneInput = document.getElementById('phone-input');
 
+const optionsPlay = document.querySelectorAll('.options-play');
+
 const removeErrorState = () => {
   const textsErrors = document.querySelectorAll('.text-error');
   textsErrors.forEach((textError) => textError.remove());
@@ -134,4 +136,18 @@ textBack.addEventListener("click", () => {
   stepIsVisible = stepIsVisible - 1;
   stepVisibility();
   backVisible();
+})
+
+
+// Options Play Selected Style
+optionsPlay.forEach(option => {
+  option.addEventListener("click", (option) => {
+    if (!option.target.classList.contains("options-play-activate")) {
+      optionsPlay.forEach(option => {
+        option.classList.remove("options-play-activate");
+      });
+
+      option.target.classList.add("options-play-activate");
+    }
+  })
 })

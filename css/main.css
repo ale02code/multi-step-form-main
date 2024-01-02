@@ -220,6 +220,10 @@
   padding: 1rem;
 }
 
+.options-play-activate {
+  border-color: var(--Purplish-Blue);
+}
+
 .options-play__text__title {
   font-size: 20px;
   color: var(--Marine-Blue);
@@ -282,11 +286,11 @@
 /* Errors Styles */
 
 .border-error {
-  border: red solid 1px;
+  border: var(--Strawberry-Red) solid 1px;
 }
 
 .text-error {
-  color: red;
+  color: var(--Strawberry-Red);
 }
 
 .isNotVisible {
