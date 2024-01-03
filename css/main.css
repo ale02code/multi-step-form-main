@@ -218,6 +218,7 @@
   border: var(--Cool-Gray) solid 1px;
   border-radius: 8px;
   padding: 1rem;
+  color: var(--Cool-Gray);
 }
 
 .options-play-activate {
@@ -225,7 +226,7 @@
 }
 
 .options-play__text__title {
-  font-size: 20px;
+  font-size: 18px;
   color: var(--Marine-Blue);
 }
 
@@ -281,6 +282,67 @@
   height: max-content;
   padding: 6px;
   border-radius: 30px;
+}
+
+/* step 3 */
+
+.step-3 {
+  width: 90%;
+  min-height: 200px;
+  background-color: var(--White);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.2rem;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.additional-service {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border: var(--Cool-Gray) 1px solid;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.additional-service-check {
+  border: var(--Purplish-Blue) 1px solid;
+}
+
+.additional-service__texts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.additional-service__texts__title {
+  font-size: 18px;
+  color: var(--Marine-Blue);
+}
+
+.additional-service__texts__desc {
+  color: var(--Cool-Gray);
+  font-size: 14px;
+}
+
+.additional-service__texts__price {
+  font-size: 13px;
+  color: var(--Purplish-Blue);
+}
+
+.check-add {
+  outline: none;
+  transform: scale(1.7);
+  border-radius: 8px;
+}
+
+.check-add:checked {
+  accent-color: var(--Purplish-Blue);
 }
 
 /* Errors Styles */

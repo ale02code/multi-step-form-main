@@ -36,7 +36,7 @@ formStep1.addEventListener('submit', (e) => {
   e.preventDefault();
 });
 
-let stepNumber = 2;
+let stepNumber = 3;
 
 const stepState = () => {
   const totalSteps = 4;
@@ -80,7 +80,7 @@ if (stepNumber === 1) {
   textBack.style.visibility = "hidden";
 }
 
-let stepIsVisible = 2;
+let stepIsVisible = 3;
 
 const stepVisibility = () => {
   const maxSteps = 4;
