@@ -76,6 +76,8 @@ methodPay.addEventListener("change", () => {
   }
 })
 
+
+
 onlineServiceCheck.addEventListener('change', () => {
   if (onlineContainer.classList.contains("additional-service-check")) {
     onlineContainer.classList.remove("additional-service-check");

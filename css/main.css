@@ -204,7 +204,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  gap: 1.2rem;
+  gap: .6rem;
   margin: auto;
   border-radius: 8px;
 }
@@ -293,7 +293,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  gap: 1.2rem;
+  gap: .6rem;
   margin: auto;
   border-radius: 8px;
 }
@@ -343,6 +343,83 @@
 
 .check-add:checked {
   accent-color: var(--Purplish-Blue);
+}
+
+/* step 4 */
+
+.step-4 {
+  width: 90%;
+  min-height: 200px;
+  background-color: var(--White);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: .6rem;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.step-4__bill {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.step-4__bill__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-4__bill__main__text__title {
+  font-size: 18px;
+  color: var(--Marine-Blue);
+}
+
+.step-4__bill__main__text__change {
+  color: var(--Cool-Gray);
+  text-decoration: underline;
+}
+
+.step-4__bill__main__price {
+  color: var(--Marine-Blue);
+  font-weight: bolder;
+}
+
+.step-4__bill__divider {
+  width: 100%;
+  margin: auto;
+  height: 1px;
+  border-bottom: var(--Light-Gray) 1px solid;
+}
+
+.step-4__bill__additional {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.step-4__bill__additional__texts, .step-4__total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.step-4__bill__additional__texts__price {
+  color: var(--Marine-Blue);
+}
+
+.step-4__bill__additional__texts__title, .step-4__total__title {
+  color: var(--Cool-Gray);
+}
+
+.step-4__total__price {
+  color: var(--Purplish-Blue);
+  font-weight: bolder;
 }
 
 /* Errors Styles */

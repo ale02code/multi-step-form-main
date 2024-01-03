@@ -36,7 +36,7 @@ formStep1.addEventListener('submit', (e) => {
   e.preventDefault();
 });
 
-let stepNumber = 3;
+let stepNumber = 4;
 
 const stepState = () => {
   const totalSteps = 4;
@@ -80,7 +80,7 @@ if (stepNumber === 1) {
   textBack.style.visibility = "hidden";
 }
 
-let stepIsVisible = 3;
+let stepIsVisible = 4;
 
 const stepVisibility = () => {
   const maxSteps = 4;
@@ -109,7 +109,22 @@ const backVisible = () => {
   }
 }
 
+const changeButtonToConfirm = (step, buttonConfirm) => {
+  if (step === 4) {
+    buttonConfirm.textContent = "Confirm";
+  }
+
+  if (step !== 4) {
+    buttonConfirm.textContent = "Next Step";
+  }
+}
+
+changeButtonToConfirm(stepNumber, btnNextStep);
+
 btnNextStep.addEventListener("click", () => {
+
+  changeButtonToConfirm(stepNumber, btnNextStep);
+
   if (stepNumber === 1) {
     if (stepOne()) {
       removeErrorState();
@@ -125,8 +140,6 @@ btnNextStep.addEventListener("click", () => {
     stepIsVisible = stepIsVisible + 1;
     stepVisibility();
     backVisible();
-  } else {
-    console.log(stepIsVisible, stepNumber);
   }
 });
 
@@ -136,6 +149,7 @@ textBack.addEventListener("click", () => {
   stepIsVisible = stepIsVisible - 1;
   stepVisibility();
   backVisible();
+  changeButtonToConfirm(stepNumber, btnNextStep);
 })
 
 
