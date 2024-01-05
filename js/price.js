@@ -24,11 +24,10 @@ const customizableProfileContainer = document.getElementById("customizable-profi
 const optionsPlay = document.querySelectorAll('.options-play');
 
 const titleBill = document.querySelector(".step-4__bill__main__text__title");
+const priceBill = document.querySelector(".step-4__bill__main__price");
+const billAdd = document.querySelector(".step-4__bill__additional");
 
-// const checkBox = document.querySelectorAll(".check-add");
-// const addContainer = document.querySelectorAll(".additional-service");
-
-let payOn = '';
+let payOn = 'month';
 
 const changePriceToggle = () => {
   if (methodPay.value === '0') {
@@ -70,47 +69,85 @@ methodPay.addEventListener("change", () => {
   changePriceToggle();
 
   if (payOn === 'month') {
-    service.textContent = '$1/mo';
-    storage.textContent = '$2/mo';
-    profile.textContent = '$2/mo';
+    service.textContent = '+$1/mo';
+    storage.textContent = '+$2/mo';
+    profile.textContent = '+$2/mo';
   } else {
-    service.textContent = '$10/yr';
-    storage.textContent = '$20/yr';
-    profile.textContent = '$20/yr';
+    service.textContent = '+$10/yr';
+    storage.textContent = '+$20/yr';
+    profile.textContent = '+$20/yr';
   }
 })
 
-let onlineService = false;
-let largerStorage = false;
-let customizableProfile = false;
+const containerTextOnlineService = document.createElement('div');
+containerTextOnlineService.classList.add('step-4__bill__additional__texts');
 
-onlineServiceCheck.addEventListener('change', () => {
+const textTitleServiceOnline = document.createElement('p');
+textTitleServiceOnline.classList.add('step-4__bill__additional__texts__title');
+
+const textPriceServiceOnline = document.createElement('p');
+textPriceServiceOnline.classList.add('step-4__bill__additional__texts__price');
+
+onlineServiceCheck.addEventListener('input', () => {
   if (onlineContainer.classList.contains("additional-service-check")) {
     onlineContainer.classList.remove("additional-service-check");
-    onlineService = false;
   } else {
-    onlineService = true;
     onlineContainer.classList.add("additional-service-check");
+
+    textTitleServiceOnline.textContent = "Online service";
+    textPriceServiceOnline.textContent = `${payOn === 'month' ? '$1/mo' : '$10/yr'}`;
+
+    billAdd.appendChild(containerTextOnlineService);
+    containerTextOnlineService.appendChild(textTitleServiceOnline);
+    containerTextOnlineService.appendChild(textPriceServiceOnline);
   }
 });
 
-largerStorageCheck.addEventListener('change', () => {
+const containerTextLargerStorage = document.createElement('div');
+containerTextLargerStorage.classList.add('step-4__bill__additional__texts');
+
+const textTitleStorageLarger = document.createElement('p');
+textTitleStorageLarger.classList.add('step-4__bill__additional__texts__title');
+
+const textPriceStorageLarger = document.createElement('p');
+textPriceStorageLarger.classList.add('step-4__bill__additional__texts__price');
+
+largerStorageCheck.addEventListener('input', () => {
   if (largerStorageContainer.classList.contains("additional-service-check")) {
     largerStorageContainer.classList.remove("additional-service-check");
-    largerStorage = false;
   } else {
-    largerStorage = true;
     largerStorageContainer.classList.add("additional-service-check");
+
+    textTitleStorageLarger.textContent = "Larger storage";
+    textPriceStorageLarger.textContent = `${payOn === 'month' ? '$2/mo' : '$20/yr'}`;
+
+    billAdd.appendChild(containerTextLargerStorage);
+    containerTextLargerStorage.appendChild(textTitleStorageLarger);
+    containerTextLargerStorage.appendChild(textPriceStorageLarger);
   }
 });
 
-customizableProfileCheck.addEventListener('change', () => {
+const containerTextCustomizableProfile = document.createElement('div');
+containerTextCustomizableProfile.classList.add('step-4__bill__additional__texts');
+
+const textTitleProfileCustomizable = document.createElement('p');
+textTitleProfileCustomizable.classList.add('step-4__bill__additional__texts__title');
+
+const textPriceProfileCustomizable = document.createElement('p');
+textPriceProfileCustomizable.classList.add('step-4__bill__additional__texts__price');
+
+customizableProfileCheck.addEventListener('input', () => {
   if (customizableProfileContainer.classList.contains("additional-service-check")) {
     customizableProfileContainer.classList.remove("additional-service-check");
-    customizableProfile = false;
   } else {
-    customizableProfile = true;
     customizableProfileContainer.classList.add("additional-service-check");
+
+    textTitleProfileCustomizable.textContent = "Customizable profile";
+    textPriceProfileCustomizable.textContent = `${payOn === 'month' ? '$2/mo' : '$20/yr'}`;
+
+    billAdd.appendChild(containerTextCustomizableProfile);
+    containerTextCustomizableProfile.appendChild(textTitleProfileCustomizable);
+    containerTextCustomizableProfile.appendChild(textPriceProfileCustomizable);
   }
 });
 
@@ -131,7 +168,10 @@ optionsPlay.forEach(option => {
 
       pricePlanSeleted = event.target.querySelector(".plan-price-selected").textContent;
 
-      titleBill.textContent = `${planSeleted}`;
+      console.log("plan:", planSeleted, "price:", pricePlanSeleted);
+
+      titleBill.textContent = `${planSeleted} ${payOn === 'month' ? '$1/mo' : '$10/yr'}`;
+      priceBill.textContent = pricePlanSeleted;
     }
   })
 })
