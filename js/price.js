@@ -21,6 +21,10 @@ const onlineContainer = document.getElementById("online-service-container");
 const largerStorageContainer = document.getElementById("larger-storage-container");
 const customizableProfileContainer = document.getElementById("customizable-profile-container");
 
+const optionsPlay = document.querySelectorAll('.options-play');
+
+const titleBill = document.querySelector(".step-4__bill__main__text__title");
+
 // const checkBox = document.querySelectorAll(".check-add");
 // const addContainer = document.querySelectorAll(".additional-service");
 
@@ -76,12 +80,16 @@ methodPay.addEventListener("change", () => {
   }
 })
 
-
+let onlineService = false;
+let largerStorage = false;
+let customizableProfile = false;
 
 onlineServiceCheck.addEventListener('change', () => {
   if (onlineContainer.classList.contains("additional-service-check")) {
     onlineContainer.classList.remove("additional-service-check");
+    onlineService = false;
   } else {
+    onlineService = true;
     onlineContainer.classList.add("additional-service-check");
   }
 });
@@ -89,7 +97,9 @@ onlineServiceCheck.addEventListener('change', () => {
 largerStorageCheck.addEventListener('change', () => {
   if (largerStorageContainer.classList.contains("additional-service-check")) {
     largerStorageContainer.classList.remove("additional-service-check");
+    largerStorage = false;
   } else {
+    largerStorage = true;
     largerStorageContainer.classList.add("additional-service-check");
   }
 });
@@ -97,7 +107,31 @@ largerStorageCheck.addEventListener('change', () => {
 customizableProfileCheck.addEventListener('change', () => {
   if (customizableProfileContainer.classList.contains("additional-service-check")) {
     customizableProfileContainer.classList.remove("additional-service-check");
+    customizableProfile = false;
   } else {
+    customizableProfile = true;
     customizableProfileContainer.classList.add("additional-service-check");
   }
 });
+
+// Options Play Selected Style
+let planSeleted = "Arcade";
+let pricePlanSeleted = 9;
+
+optionsPlay.forEach(option => {
+  option.addEventListener("click", (event) => {
+    if (!event.target.classList.contains("options-play-activate")) {
+      optionsPlay.forEach(opt => {
+        opt.classList.remove("options-play-activate");
+      });
+
+      event.target.classList.add("options-play-activate");
+
+      planSeleted = event.target.querySelector(".options-play__text__title").textContent;
+
+      pricePlanSeleted = event.target.querySelector(".plan-price-selected").textContent;
+
+      titleBill.textContent = `${planSeleted}`;
+    }
+  })
+})

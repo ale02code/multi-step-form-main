@@ -13,8 +13,6 @@ const emailInput = document.getElementById('email-input');
 const phoneContainer = document.getElementById('phone-container');
 const phoneInput = document.getElementById('phone-input');
 
-const optionsPlay = document.querySelectorAll('.options-play');
-
 const removeErrorState = () => {
   const textsErrors = document.querySelectorAll('.text-error');
   textsErrors.forEach((textError) => textError.remove());
@@ -36,7 +34,7 @@ formStep1.addEventListener('submit', (e) => {
   e.preventDefault();
 });
 
-let stepNumber = 4;
+let stepNumber = 2;
 
 const stepState = () => {
   const totalSteps = 4;
@@ -80,7 +78,7 @@ if (stepNumber === 1) {
   textBack.style.visibility = "hidden";
 }
 
-let stepIsVisible = 4;
+let stepIsVisible = 2;
 
 const stepVisibility = () => {
   const maxSteps = 4;
@@ -150,18 +148,4 @@ textBack.addEventListener("click", () => {
   stepVisibility();
   backVisible();
   changeButtonToConfirm(stepNumber, btnNextStep);
-})
-
-
-// Options Play Selected Style
-optionsPlay.forEach(option => {
-  option.addEventListener("click", (option) => {
-    if (!option.target.classList.contains("options-play-activate")) {
-      optionsPlay.forEach(option => {
-        option.classList.remove("options-play-activate");
-      });
-
-      option.target.classList.add("options-play-activate");
-    }
-  })
 })
