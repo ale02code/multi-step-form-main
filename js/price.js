@@ -26,7 +26,11 @@ const optionsPlay = document.querySelectorAll('.options-play');
 const titleBill = document.querySelector(".step-4__bill__main__text__title");
 const priceBill = document.querySelector(".step-4__bill__main__price");
 const billAdd = document.querySelector(".step-4__bill__additional");
+const totalBill = document.getElementById("total-price-bill");
 
+const titleTotalBill = document.getElementById("total-text-bill");
+
+let total = 0;
 let payOn = 'month';
 
 const changePriceToggle = () => {
@@ -45,6 +49,8 @@ const changePriceToggle = () => {
     optionsPlayTextYearFree.forEach(text => {
       text.classList.replace("options-play__text__months-free", "options-play__text__months-free-invisible");
     })
+
+    titleTotalBill.textContent = "Total (per month)";
   } else {
     payOn = 'year';
 
@@ -60,6 +66,8 @@ const changePriceToggle = () => {
     optionsPlayTextYearFree.forEach(text => {
       text.classList.replace("options-play__text__months-free-invisible", "options-play__text__months-free");
     })
+
+    titleTotalBill.textContent = "Total (per year)";
   }
 }
 
@@ -67,6 +75,16 @@ changePriceToggle();
 
 methodPay.addEventListener("change", () => {
   changePriceToggle();
+
+  if (payOn === 'month') {
+    titleBill.textContent = "Total (per month)";
+    priceBill.textContent = `$9/mo`;
+    totalBill.textContent = "$9/mo"
+  } else {
+    titleBill.textContent = "Total (per year)";
+    priceBill.textContent = `$90/yr`;
+    totalBill.textContent = "$90/yr"
+  }
 
   if (payOn === 'month') {
     service.textContent = '+$1/mo';
@@ -77,6 +95,60 @@ methodPay.addEventListener("change", () => {
     storage.textContent = '+$20/yr';
     profile.textContent = '+$20/yr';
   }
+
+  optionsPlay.forEach(option => {
+    option.classList.remove("options-play-activate");
+    onlineServiceCheck.checked = false;
+    largerStorageCheck.checked = false;
+    customizableProfileCheck.checked = false;
+  })
+})
+
+// Options Play Selected Style
+let planSeleted = "Arcade";
+let pricePlanSeleted = 9;
+
+let serviceTotal = 9;
+
+optionsPlay.forEach(option => {
+  option.addEventListener("click", (event) => {
+    if (!event.target.classList.contains("options-play-activate")) {
+      optionsPlay.forEach(opt => {
+        opt.classList.remove("options-play-activate");
+      });
+
+      event.target.classList.add("options-play-activate");
+
+      planSeleted = event.target.querySelector(".options-play__text__title").textContent;
+
+      pricePlanSeleted = event.target.querySelector(".plan-price-selected").textContent;
+
+      console.log("plan:", planSeleted, "price:", pricePlanSeleted);
+
+      if (payOn === 'month') {
+        if (planSeleted === "Arcade") {
+          serviceTotal = 9;
+        } else if (planSeleted === "Advanced") {
+          serviceTotal = 12;
+        } else if (planSeleted === "Pro") {
+          serviceTotal = 15;
+        }
+      } else {
+        if (planSeleted === "Arcade") {
+          serviceTotal = 90;
+        } else if (planSeleted === "Advanced") {
+          serviceTotal = 120;
+        } else if (planSeleted === "Pro") {
+          serviceTotal = 150;
+        }
+      }
+
+      titleBill.textContent = `${planSeleted} ${payOn === 'month' ? '$1/mo' : '$10/yr'}`;
+      priceBill.textContent = pricePlanSeleted;
+
+      totalBill.textContent = `$${(total === 0 ? serviceTotal : total + serviceTotal)}/mo`;
+    }
+  })
 })
 
 const containerTextOnlineService = document.createElement('div');
@@ -96,6 +168,9 @@ onlineServiceCheck.addEventListener('input', () => {
 
     textTitleServiceOnline.textContent = "Online service";
     textPriceServiceOnline.textContent = `${payOn === 'month' ? '$1/mo' : '$10/yr'}`;
+
+    total = total + (payOn === 'month' ? 1 : 10);
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')}`;
 
     billAdd.appendChild(containerTextOnlineService);
     containerTextOnlineService.appendChild(textTitleServiceOnline);
@@ -121,6 +196,9 @@ largerStorageCheck.addEventListener('input', () => {
     textTitleStorageLarger.textContent = "Larger storage";
     textPriceStorageLarger.textContent = `${payOn === 'month' ? '$2/mo' : '$20/yr'}`;
 
+    total = total + (payOn === 'month' ? 2 : 20);
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')}`;
+
     billAdd.appendChild(containerTextLargerStorage);
     containerTextLargerStorage.appendChild(textTitleStorageLarger);
     containerTextLargerStorage.appendChild(textPriceStorageLarger);
@@ -145,33 +223,11 @@ customizableProfileCheck.addEventListener('input', () => {
     textTitleProfileCustomizable.textContent = "Customizable profile";
     textPriceProfileCustomizable.textContent = `${payOn === 'month' ? '$2/mo' : '$20/yr'}`;
 
+    total = total + (payOn === 'month' ? 2 : 20);
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')}`;
+
     billAdd.appendChild(containerTextCustomizableProfile);
     containerTextCustomizableProfile.appendChild(textTitleProfileCustomizable);
     containerTextCustomizableProfile.appendChild(textPriceProfileCustomizable);
   }
 });
-
-// Options Play Selected Style
-let planSeleted = "Arcade";
-let pricePlanSeleted = 9;
-
-optionsPlay.forEach(option => {
-  option.addEventListener("click", (event) => {
-    if (!event.target.classList.contains("options-play-activate")) {
-      optionsPlay.forEach(opt => {
-        opt.classList.remove("options-play-activate");
-      });
-
-      event.target.classList.add("options-play-activate");
-
-      planSeleted = event.target.querySelector(".options-play__text__title").textContent;
-
-      pricePlanSeleted = event.target.querySelector(".plan-price-selected").textContent;
-
-      console.log("plan:", planSeleted, "price:", pricePlanSeleted);
-
-      titleBill.textContent = `${planSeleted} ${payOn === 'month' ? '$1/mo' : '$10/yr'}`;
-      priceBill.textContent = pricePlanSeleted;
-    }
-  })
-})

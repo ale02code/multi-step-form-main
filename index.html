@@ -30,146 +30,148 @@
         </div>
       </header>
 
-      <div class="step-1">
-        <h3 class="step__title">Personal info</h3>
-        <p class="step__desc">Please provide your name, email address, and phone number.</p>
+      <div id="main-step">
+        <div class="step-1 step">
+          <h3 class="step__title">Personal info</h3>
+          <p class="step__desc">Please provide your name, email address, and phone number.</p>
 
-        <form class="step-1__form" id="form-step-1">
-          <div class="step-1__form__input-container" id="name-container">
-            <label for="name" class="step-1__form__input-container__label">Name</label>
-            <input class="step-1__form__input-container__input" type="text" placeholder="e.g. Stephen King"
-              id="name-input">
-          </div>
-
-          <div class="step-1__form__input-container" id="email-container">
-            <label for="email" class="step-1__form__input-container__label">Email Address</label>
-            <input class="step-1__form__input-container__input" type="text" placeholder="e.g. stephenking@lorem.com"
-              id="email-input">
-          </div>
-
-          <div class="step-1__form__input-container" id="phone-container">
-            <label for="phone" class="step-1__form__input-container__label">Phone Number</label>
-            <input class="step-1__form__input-container__input" type="text" placeholder="e.g. +1 234 567 890"
-              id="phone-input">
-          </div>
-        </form>
-      </div>
-
-      <section class="step-2">
-        <h3 class="step__title">Select your plan</h3>
-        <p class="step__desc">You have the option of monthly or yearly billing</p>
-
-        <div class="options-play options-play-activate">
-          <figure>
-            <img src="assets/images/icon-arcade.svg" alt="Arcade Icon" title="Arcade">
-          </figure>
-          <div class="options-play__text">
-            <strong class="options-play__text__title">Arcade</strong>
-            <p class="options-play__text__arcade-price plan-price-selected"></p>
-            <p class="options-play__text__months-free-invisible">2 months free</p>
-          </div>
-        </div>
-        <div class="options-play">
-          <figure>
-            <img src="assets/images/icon-advanced.svg" alt="Advanced Icon" title="Advanced">
-          </figure>
-          <div class="options-play__text">
-            <strong class="options-play__text__title">Advanced</strong>
-            <p class="options-play__text__advanced-price plan-price-selected"></p>
-            <p class="options-play__text__months-free-invisible">2 months free</p>
-          </div>
-        </div>
-        <div class="options-play">
-          <figure>
-            <img src="assets/images/icon-pro.svg" alt="Pro Icon" title="Pro">
-          </figure>
-          <div class="options-play__text">
-            <strong class="options-play__text__title">Pro</strong>
-            <p class="options-play__text__pro-price plan-price-selected"></p>
-            <p class="options-play__text__months-free-invisible">2 months free</p>
-          </div>
-        </div>
-
-        <div class="slider-pay">
-          <p class="monthly" id="monthly">Monthly</p>
-          <input type="range" id="method-pay" max="1" value="0">
-          <p class="yearly-activate" id="yearly">Yearly</p>
-        </div>
-      </section>
-
-      <div class="step-3">
-        <h3 class="step__title">Pick add-ons</h3>
-        <p class="step__desc">Add-ons help enhance your gaming experience.</p>
-
-        <div class="additional-service" id="online-service-container">
-          <div class="additional-service__texts">
-            <input type="checkbox" id="online-service" class="check-add">
-
-            <div>
-              <strong class="additional-service__texts__title">Online service</strong>
-              <p class="additional-service__texts__desc">Access to multiplayer games</p>
-            </div>
-          </div>
-          <p class="additional-service__texts__price" id="online-service-price">+$1/mo</p>
-        </div>
-
-        <div class="additional-service" id="larger-storage-container">
-          <div class="additional-service__texts">
-            <input type="checkbox" id="larger-storage" class="check-add">
-
-            <div>
-              <strong class="additional-service__texts__title">Larger storage</strong>
-              <p class="additional-service__texts__desc">Extra 1TB of cloud save</p>
-            </div>
-          </div>
-          <p class="additional-service__texts__price" id="larger-storage-price">+$2/mo</p>
-        </div>
-
-        <div class="additional-service" id="customizable-profile-container">
-          <div class="additional-service__texts">
-            <input type="checkbox" id="customizable-profile" class="check-add">
-
-            <div>
-              <strong class="additional-service__texts__title">Customizable profile</strong>
-              <p class="additional-service__texts__desc">Custom theme on your profile
-              </p>
-            </div>
-          </div>
-          <p class="additional-service__texts__price" id="customizable-profile-price">+$2/mo</p>
-        </div>
-      </div>
-      <div class="step-4">
-        <h3 class="step__title">Finishing up</h3>
-        <p class="step__desc">Double-check everything looks OK before confirming.</p>
-        <section class="step-4__bill">
-          <div class="step-4__bill__main">
-            <div class="step-4__bill__main__text">
-              <strong class="step-4__bill__main__text__title">Arcade (Monthly)</strong>
-              <p class="step-4__bill__main__text__change">Change</p>
-            </div>
-            <p class="step-4__bill__main__price" id="main-service-bill">$9/mo</p>
-          </div>
-
-          <div class="step-4__bill__divider"></div>
-
-          <div class="step-4__bill__additional">
-            <!-- <div class="step-4__bill__additional__texts">
-              <p class="step-4__bill__additional__texts__title">Online service</p>
-              <p class="step-4__bill__additional__texts__price">+$1/mo</p>
+          <form class="step-1__form" id="form-step-1">
+            <div class="step-1__form__input-container" id="name-container">
+              <label for="name" class="step-1__form__input-container__label">Name</label>
+              <input class="step-1__form__input-container__input" type="text" placeholder="e.g. Stephen King"
+                id="name-input">
             </div>
 
-            <div class="step-4__bill__additional__texts">
-              <p class="step-4__bill__additional__texts__title">Larger storage</p>
-              <p class="step-4__bill__additional__texts__price">+$2/mo</p>
-            </div> -->
+            <div class="step-1__form__input-container" id="email-container">
+              <label for="email" class="step-1__form__input-container__label">Email Address</label>
+              <input class="step-1__form__input-container__input" type="text" placeholder="e.g. stephenking@lorem.com"
+                id="email-input">
+            </div>
+
+            <div class="step-1__form__input-container" id="phone-container">
+              <label for="phone" class="step-1__form__input-container__label">Phone Number</label>
+              <input class="step-1__form__input-container__input" type="text" placeholder="e.g. +1 234 567 890"
+                id="phone-input">
+            </div>
+          </form>
+        </div>
+
+        <section class="step-2 step">
+          <h3 class="step__title">Select your plan</h3>
+          <p class="step__desc">You have the option of monthly or yearly billing</p>
+
+          <div class="options-play options-play-activate">
+            <figure>
+              <img src="assets/images/icon-arcade.svg" alt="Arcade Icon" title="Arcade">
+            </figure>
+            <div class="options-play__text">
+              <strong class="options-play__text__title">Arcade</strong>
+              <p class="options-play__text__arcade-price plan-price-selected"></p>
+              <p class="options-play__text__months-free-invisible">2 months free</p>
+            </div>
+          </div>
+          <div class="options-play">
+            <figure>
+              <img src="assets/images/icon-advanced.svg" alt="Advanced Icon" title="Advanced">
+            </figure>
+            <div class="options-play__text">
+              <strong class="options-play__text__title">Advanced</strong>
+              <p class="options-play__text__advanced-price plan-price-selected"></p>
+              <p class="options-play__text__months-free-invisible">2 months free</p>
+            </div>
+          </div>
+          <div class="options-play">
+            <figure>
+              <img src="assets/images/icon-pro.svg" alt="Pro Icon" title="Pro">
+            </figure>
+            <div class="options-play__text">
+              <strong class="options-play__text__title">Pro</strong>
+              <p class="options-play__text__pro-price plan-price-selected"></p>
+              <p class="options-play__text__months-free-invisible">2 months free</p>
+            </div>
           </div>
 
-          <section class="step-4__total">
-            <p class="step-4__total__title" id="total-text-bill">Total (per month)</p>
-            <p class="step-4__total__price" id="total-price-bill">+$12/mo</p>
-          </section>
+          <div class="slider-pay">
+            <p class="monthly" id="monthly">Monthly</p>
+            <input type="range" id="method-pay" max="1" value="0">
+            <p class="yearly-activate" id="yearly">Yearly</p>
+          </div>
         </section>
+
+        <div class="step-3 step">
+          <h3 class="step__title">Pick add-ons</h3>
+          <p class="step__desc">Add-ons help enhance your gaming experience.</p>
+
+          <div class="additional-service" id="online-service-container">
+            <div class="additional-service__texts">
+              <input type="checkbox" id="online-service" class="check-add">
+
+              <div>
+                <strong class="additional-service__texts__title">Online service</strong>
+                <p class="additional-service__texts__desc">Access to multiplayer games</p>
+              </div>
+            </div>
+            <p class="additional-service__texts__price" id="online-service-price">+$1/mo</p>
+          </div>
+
+          <div class="additional-service" id="larger-storage-container">
+            <div class="additional-service__texts">
+              <input type="checkbox" id="larger-storage" class="check-add">
+
+              <div>
+                <strong class="additional-service__texts__title">Larger storage</strong>
+                <p class="additional-service__texts__desc">Extra 1TB of cloud save</p>
+              </div>
+            </div>
+            <p class="additional-service__texts__price" id="larger-storage-price">+$2/mo</p>
+          </div>
+
+          <div class="additional-service" id="customizable-profile-container">
+            <div class="additional-service__texts">
+              <input type="checkbox" id="customizable-profile" class="check-add">
+
+              <div>
+                <strong class="additional-service__texts__title">Customizable profile</strong>
+                <p class="additional-service__texts__desc">Custom theme on your profile
+                </p>
+              </div>
+            </div>
+            <p class="additional-service__texts__price" id="customizable-profile-price">+$2/mo</p>
+          </div>
+        </div>
+
+        <div class="step-4 step">
+          <h3 class="step__title">Finishing up</h3>
+          <p class="step__desc">Double-check everything looks OK before confirming.</p>
+          <section class="step-4__bill">
+            <div class="step-4__bill__main">
+              <div class="step-4__bill__main__text">
+                <strong class="step-4__bill__main__text__title">Arcade (Monthly)</strong>
+                <p class="step-4__bill__main__text__change">Change</p>
+              </div>
+              <p class="step-4__bill__main__price" id="main-service-bill">$9/mo</p>
+            </div>
+
+            <div class="step-4__bill__divider"></div>
+
+            <div class="step-4__bill__additional">
+            </div>
+
+            <section class="step-4__total">
+              <p class="step-4__total__title" id="total-text-bill">Total (per month)</p>
+              <p class="step-4__total__price" id="total-price-bill">+$9/mo</p>
+            </section>
+          </section>
+        </div>
       </div>
+
+      <section class="sub" id="sub">
+        <img src="assets/images/icon-thank-you.svg" alt="Thank You Icon">
+        <h2 class="sub__title">Thank you!</h2>
+        <p class="sub__desc">Thanks for confirming your subscription! We hope you enjoy using our platform. If you ever
+          need
+          support, please feel free to email us at support@loremgaming.com</p>
+      </section>
     </div>
   </main>
 
@@ -179,6 +181,7 @@
       <button class="footer__submit-container__btn__next" type="submit">Next Step</button>
     </div>
   </footer>
+
   <script src="js/main.js"></script>
   <script src="js/price.js"></script>
 </body>

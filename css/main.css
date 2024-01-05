@@ -404,7 +404,8 @@
   margin-bottom: 1.5rem;
 }
 
-.step-4__bill__additional__texts, .step-4__total {
+.step-4__bill__additional__texts,
+.step-4__total {
   display: flex;
   justify-content: space-between;
 }
@@ -413,12 +414,41 @@
   color: var(--Marine-Blue);
 }
 
-.step-4__bill__additional__texts__title, .step-4__total__title {
+.step-4__bill__additional__texts__title,
+.step-4__total__title {
   color: var(--Cool-Gray);
 }
 
 .step-4__total__price {
   color: var(--Purplish-Blue);
+  font-weight: bolder;
+}
+
+/* subscription */
+
+.sub {
+  width: 90%;
+  margin: auto;
+  display: none;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: var(--White);
+  min-height: 390px;
+}
+
+.sub__desc {
+  font-size: 19px;
+  text-align: center;
+  color: var(--Cool-Gray);
+}
+
+.sub__title {
+  font-size: 1.8rem;
+  color: var(--Marine-Blue);
   font-weight: bolder;
 }
 

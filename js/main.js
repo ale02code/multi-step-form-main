@@ -1,3 +1,4 @@
+const main = document.querySelector('.main');
 const formStep1 = document.getElementById('form-step-1');
 const btnNextStep = document.querySelector('.footer__submit-container__btn__next');
 const textBack = document.querySelector(".footer__submit-container__back");
@@ -12,6 +13,9 @@ const emailInput = document.getElementById('email-input');
 
 const phoneContainer = document.getElementById('phone-container');
 const phoneInput = document.getElementById('phone-input');
+
+const step = document.querySelectorAll(".step");
+const sub = document.getElementById("sub");
 
 const removeErrorState = () => {
   const textsErrors = document.querySelectorAll('.text-error');
@@ -34,7 +38,7 @@ formStep1.addEventListener('submit', (e) => {
   e.preventDefault();
 });
 
-let stepNumber = 2;
+let stepNumber = 1;
 
 const stepState = () => {
   const totalSteps = 4;
@@ -78,7 +82,7 @@ if (stepNumber === 1) {
   textBack.style.visibility = "hidden";
 }
 
-let stepIsVisible = 2;
+let stepIsVisible = 1;
 
 const stepVisibility = () => {
   const maxSteps = 4;
@@ -108,20 +112,18 @@ const backVisible = () => {
 }
 
 const changeButtonToConfirm = (step, buttonConfirm) => {
-  if (step === 4) {
+  if (step >= 3) {
     buttonConfirm.textContent = "Confirm";
-  }
-
-  if (step !== 4) {
+  } else {
     buttonConfirm.textContent = "Next Step";
   }
 }
 
-changeButtonToConfirm(stepNumber, btnNextStep);
-
 btnNextStep.addEventListener("click", () => {
 
   changeButtonToConfirm(stepNumber, btnNextStep);
+
+  console.log("stepNumber:", stepNumber);
 
   if (stepNumber === 1) {
     if (stepOne()) {
@@ -138,6 +140,15 @@ btnNextStep.addEventListener("click", () => {
     stepIsVisible = stepIsVisible + 1;
     stepVisibility();
     backVisible();
+
+    if (btnNextStep.textContent === "Confirm") {
+      btnNextStep.addEventListener("click", () => {
+        step.forEach(stp => stp.style.display = "none");
+        footerContent.style.display = "none";
+        main.style.height = "75%";
+        sub.style.display = "flex";
+      })
+    }
   }
 });
 
