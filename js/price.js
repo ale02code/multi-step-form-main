@@ -29,6 +29,7 @@ const billAdd = document.querySelector(".step-4__bill__additional");
 const totalBill = document.getElementById("total-price-bill");
 
 const titleTotalBill = document.getElementById("total-text-bill");
+const checkedAdds = document.querySelectorAll(".additional-service")
 
 let total = 0;
 let payOn = 'month';
@@ -74,16 +75,14 @@ const changePriceToggle = () => {
 changePriceToggle();
 
 methodPay.addEventListener("change", () => {
+  total = 0;
+
   changePriceToggle();
 
   if (payOn === 'month') {
     titleBill.textContent = "Total (per month)";
-    priceBill.textContent = `$9/mo`;
-    totalBill.textContent = "$9/mo"
   } else {
     titleBill.textContent = "Total (per year)";
-    priceBill.textContent = `$90/yr`;
-    totalBill.textContent = "$90/yr"
   }
 
   if (payOn === 'month') {
@@ -98,16 +97,24 @@ methodPay.addEventListener("change", () => {
 
   optionsPlay.forEach(option => {
     option.classList.remove("options-play-activate");
-    onlineServiceCheck.checked = false;
-    largerStorageCheck.checked = false;
-    customizableProfileCheck.checked = false;
   })
+
+  largerStorageCheck.checked = false;
+  onlineServiceCheck.checked = false;
+  customizableProfileCheck.checked = false;
+
+  checkedAdds.forEach(check => check.classList.remove("additional-service-check"));
+
+  containerTextOnlineService.classList.replace("step-4__bill__additional__texts", "step-4__bill__additional__texts__invisible");
+
+  containerTextOnlineService.classList.replace("step-4__bill__additional__texts", "step-4__bill__additional__texts__invisible");
+
+  containerTextCustomizableProfile.classList.replace("step-4__bill__additional__texts", "step-4__bill__additional__texts__invisible");
 })
 
 // Options Play Selected Style
 let planSeleted = "Arcade";
 let pricePlanSeleted = 9;
-
 let serviceTotal = 9;
 
 optionsPlay.forEach(option => {
@@ -143,16 +150,16 @@ optionsPlay.forEach(option => {
         }
       }
 
-      titleBill.textContent = `${planSeleted} ${payOn === 'month' ? '$1/mo' : '$10/yr'}`;
+      titleBill.textContent = `${planSeleted} ${payOn === 'month' ? `${serviceTotal}/mo` : `${serviceTotal}/yr`}`;
       priceBill.textContent = pricePlanSeleted;
 
-      totalBill.textContent = `$${(total === 0 ? serviceTotal : total + serviceTotal)}/mo`;
+      totalBill.innerText = `${total + serviceTotal}${payOn === 'month' ? '/mo' : '/yr'}`;
     }
   })
 })
 
 const containerTextOnlineService = document.createElement('div');
-containerTextOnlineService.classList.add('step-4__bill__additional__texts');
+containerTextOnlineService.classList.add('step-4__bill__additional__texts__invisible');
 
 const textTitleServiceOnline = document.createElement('p');
 textTitleServiceOnline.classList.add('step-4__bill__additional__texts__title');
@@ -163,14 +170,17 @@ textPriceServiceOnline.classList.add('step-4__bill__additional__texts__price');
 onlineServiceCheck.addEventListener('input', () => {
   if (onlineContainer.classList.contains("additional-service-check")) {
     onlineContainer.classList.remove("additional-service-check");
+    payOn === 'month' ? total = total - 1 : total = total - 10;
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')} `;
   } else {
+    containerTextOnlineService.classList.replace("step-4__bill__additional__texts__invisible", "step-4__bill__additional__texts");
     onlineContainer.classList.add("additional-service-check");
 
     textTitleServiceOnline.textContent = "Online service";
-    textPriceServiceOnline.textContent = `${payOn === 'month' ? '$1/mo' : '$10/yr'}`;
+    textPriceServiceOnline.textContent = `${payOn === 'month' ? '$1/mo' : '$10/yr'} `;
 
     total = total + (payOn === 'month' ? 1 : 10);
-    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')}`;
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')} `;
 
     billAdd.appendChild(containerTextOnlineService);
     containerTextOnlineService.appendChild(textTitleServiceOnline);
@@ -179,7 +189,7 @@ onlineServiceCheck.addEventListener('input', () => {
 });
 
 const containerTextLargerStorage = document.createElement('div');
-containerTextLargerStorage.classList.add('step-4__bill__additional__texts');
+containerTextLargerStorage.classList.add('step-4__bill__additional__texts__invisible');
 
 const textTitleStorageLarger = document.createElement('p');
 textTitleStorageLarger.classList.add('step-4__bill__additional__texts__title');
@@ -190,14 +200,17 @@ textPriceStorageLarger.classList.add('step-4__bill__additional__texts__price');
 largerStorageCheck.addEventListener('input', () => {
   if (largerStorageContainer.classList.contains("additional-service-check")) {
     largerStorageContainer.classList.remove("additional-service-check");
+    payOn === 'month' ? total = total - 2 : total = total - 20;
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')} `;
   } else {
+    containerTextLargerStorage.classList.replace("step-4__bill__additional__texts__invisible", "step-4__bill__additional__texts");
     largerStorageContainer.classList.add("additional-service-check");
 
     textTitleStorageLarger.textContent = "Larger storage";
-    textPriceStorageLarger.textContent = `${payOn === 'month' ? '$2/mo' : '$20/yr'}`;
+    textPriceStorageLarger.textContent = `${payOn === 'month' ? '$2/mo' : '$20/yr'} `;
 
     total = total + (payOn === 'month' ? 2 : 20);
-    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')}`;
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')} `;
 
     billAdd.appendChild(containerTextLargerStorage);
     containerTextLargerStorage.appendChild(textTitleStorageLarger);
@@ -217,14 +230,17 @@ textPriceProfileCustomizable.classList.add('step-4__bill__additional__texts__pri
 customizableProfileCheck.addEventListener('input', () => {
   if (customizableProfileContainer.classList.contains("additional-service-check")) {
     customizableProfileContainer.classList.remove("additional-service-check");
+    payOn === 'month' ? total = total - 2 : total = total - 20;
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')} `;
   } else {
+    containerTextCustomizableProfile.classList.replace("step-4__bill__additional__texts__invisible", "step-4__bill__additional__texts");
     customizableProfileContainer.classList.add("additional-service-check");
 
     textTitleProfileCustomizable.textContent = "Customizable profile";
-    textPriceProfileCustomizable.textContent = `${payOn === 'month' ? '$2/mo' : '$20/yr'}`;
+    textPriceProfileCustomizable.textContent = `${payOn === 'month' ? '$2/mo' : '$20/yr'} `;
 
     total = total + (payOn === 'month' ? 2 : 20);
-    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')}`;
+    totalBill.textContent = `$${serviceTotal + total}${(payOn === 'month' ? '/mo' : '/yr')} `;
 
     billAdd.appendChild(containerTextCustomizableProfile);
     containerTextCustomizableProfile.appendChild(textTitleProfileCustomizable);

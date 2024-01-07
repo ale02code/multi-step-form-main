@@ -201,8 +201,29 @@
   border-radius: 5px;
 }
 
+.footer__submit-container__btn__confirm {
+  outline: none;
+  border: none;
+  background-color: var(--Marine-Blue);
+  color: var(--White);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.footer__submit-container__btn__confirm:hover {
+  cursor: pointer;
+}
+
+.footer__submit-container__btn__next:hover {
+  cursor: pointer;
+}
+
 .footer__submit-container__back {
   color: var(--Cool-Gray);
+}
+
+.footer__submit-container__back:hover {
+  cursor: pointer;
 }
 
 /* step 2 */
@@ -213,6 +234,7 @@
   background-color: var(--White);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 2rem;
   gap: .6rem;
   margin: auto;
@@ -275,6 +297,7 @@
 
 #method-pay {
   width: 20%;
+  max-width: 80px;
   appearance: none;
   --webkit-appearance: none;
 }
@@ -302,6 +325,7 @@
   background-color: var(--White);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 2rem;
   gap: .6rem;
   margin: auto;
@@ -359,10 +383,10 @@
 
 .step-4 {
   width: 90%;
-  min-height: 200px;
   background-color: var(--White);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 2rem;
   gap: .6rem;
   margin: auto;
@@ -371,7 +395,7 @@
 
 .step-4__bill {
   width: 90%;
-  margin: auto;
+  margin: 1rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -392,6 +416,10 @@
 .step-4__bill__main__text__change {
   color: var(--Cool-Gray);
   text-decoration: underline;
+}
+
+.step-4__bill__main__text__change:hover {
+  cursor: pointer;
 }
 
 .step-4__bill__main__price {
@@ -418,6 +446,10 @@
 .step-4__total {
   display: flex;
   justify-content: space-between;
+}
+
+.step-4__bill__additional__texts__invisible {
+  display: none;
 }
 
 .step-4__bill__additional__texts__price {
@@ -479,6 +511,18 @@
 
 .step {
   box-shadow: 10px 10px 12px 5px rgba(0, 0, 0, .1);
+}
+
+.main__step-container__progress__line strong {
+  display: none;
+}
+
+.main__step-container__progress__line p {
+  display: none;
+}
+
+.footer {
+  padding: 2rem 0;
 }
 
 @media screen and (min-width: 600px) {
@@ -549,11 +593,13 @@
   }
 
   .main__step-container__progress__line strong {
+    display: block;
     color: var(--Pastel-Blue);
     font-size: 14px;
   }
 
   .main__step-container__progress__line p {
+    display: block;
     color: var(--White);
     font-weight: bold;
     font-size: 15px;
@@ -609,5 +655,12 @@
 
   .footer__submit-container {
     padding: 0;
+  }
+
+  .sub {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-shadow: none;
   }
 }

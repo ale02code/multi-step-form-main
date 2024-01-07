@@ -1,9 +1,12 @@
 const main = document.querySelector('.main');
+const mainStepContainer = document.getElementById('main-step');
 const formStep1 = document.getElementById('form-step-1');
+const btnsContainer = document.querySelector('.footer__submit-container');
 const btnNextStep = document.querySelector('.footer__submit-container__btn__next');
 const textBack = document.querySelector(".footer__submit-container__back");
 
-const footerContent = document.querySelector(".footer__submit-container");
+const footer = document.querySelector(".footer");
+const optionsSelect = document.querySelectorAll('.options-play');
 
 const nameContainer = document.getElementById('name-container');
 const nameInput = document.getElementById('name-input');
@@ -16,6 +19,8 @@ const phoneInput = document.getElementById('phone-input');
 
 const step = document.querySelectorAll(".step");
 const sub = document.getElementById("sub");
+
+const textChangeMethodPay = document.querySelector(".step-4__bill__main__text__change");
 
 const removeErrorState = () => {
   const textsErrors = document.querySelectorAll('.text-error');
@@ -91,8 +96,6 @@ const stepVisibility = () => {
   for (let i = 1; i <= maxSteps; i++) {
     const stepVisible = document.querySelector(`.step-${i}`);
 
-    console.log(`.step-${i}:`, stepVisible);
-
     if (i === stepIsVisible) {
       stepVisible.classList.remove(stepNotVisibleClass);
     } else {
@@ -103,6 +106,31 @@ const stepVisibility = () => {
 
 stepVisibility();
 
+const confirmBottom = document.createElement('button');
+confirmBottom.classList.add('footer__submit-container__btn__confirm');
+confirmBottom.textContent = "Confirm";
+
+const replaceButtonNextStep = () => {
+  if (stepNumber === 4) {
+    btnNextStep.style.display = "none";
+    confirmBottom.style.display = "block";
+
+    confirmBottom.addEventListener("click", () => {
+      step.forEach(stp => stp.style.display = "none");
+      footer.style.display = "none";
+      mainStepContainer.style.display = "none";
+      sub.style.display = "flex";
+    });
+
+    btnsContainer.appendChild(confirmBottom);
+  } else {
+    confirmBottom.style.display = "none";
+
+    btnNextStep.textContent = "Next Step";
+    btnNextStep.style.display = "block";
+  }
+}
+
 const backVisible = () => {
   if (stepIsVisible === 1) {
     textBack.style.visibility = "hidden";
@@ -111,17 +139,19 @@ const backVisible = () => {
   }
 }
 
-const changeButtonToConfirm = (step, buttonConfirm) => {
-  if (step >= 3) {
-    buttonConfirm.textContent = "Confirm";
+const stepTwo = () => {
+  const optionsArray = Array.from(optionsSelect);
+
+  if (optionsArray.some(option => option.classList.contains("options-play-activate"))) {
+    console.log("true");
+    return true;
   } else {
-    buttonConfirm.textContent = "Next Step";
+    console.log("false");
+    return false;
   }
 }
 
 btnNextStep.addEventListener("click", () => {
-
-  changeButtonToConfirm(stepNumber, btnNextStep);
 
   console.log("stepNumber:", stepNumber);
 
@@ -134,21 +164,23 @@ btnNextStep.addEventListener("click", () => {
       stepIsVisible = stepIsVisible + 1;
       stepVisibility();
     }
-  } else if (stepNumber < 4) {
+  } else if (stepNumber === 2) {
+    console.log("stepTwo():");
+    if (stepTwo()) {
+      stepNumber = stepNumber + 1;
+      stepState();
+      stepIsVisible = stepIsVisible + 1;
+      stepVisibility();
+      backVisible();
+    }
+  } else if (stepNumber === 3) {
     stepNumber = stepNumber + 1;
     stepState();
     stepIsVisible = stepIsVisible + 1;
     stepVisibility();
     backVisible();
-
-    if (btnNextStep.textContent === "Confirm") {
-      btnNextStep.addEventListener("click", () => {
-        step.forEach(stp => stp.style.display = "none");
-        footerContent.style.display = "none";
-        main.style.height = "75%";
-        sub.style.display = "flex";
-      })
-    }
+  } else {
+    replaceButtonNextStep();
   }
 });
 
@@ -158,5 +190,13 @@ textBack.addEventListener("click", () => {
   stepIsVisible = stepIsVisible - 1;
   stepVisibility();
   backVisible();
-  changeButtonToConfirm(stepNumber, btnNextStep);
+  replaceButtonNextStep();
+})
+
+textChangeMethodPay.addEventListener('click', () => {
+  stepNumber = 2;
+  stepIsVisible = 2;
+  stepState();
+  stepVisibility();
+  replaceButtonNextStep();
 })
