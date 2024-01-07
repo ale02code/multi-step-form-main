@@ -1,0 +1,10 @@
+const imageContainer = document.querySelector('.header');
+const image = document.createElement('img');
+
+if (window.innerWidth < 600) {
+  image.src = 'assets/images/bg-sidebar-mobile.svg';
+  imageContainer.appendChild(image);
+} else {
+  image.src = 'assets/images/bg-sidebar-desktop.svg';
+  imageContainer.appendChild(image);
+}
