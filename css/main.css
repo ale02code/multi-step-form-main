@@ -553,10 +553,13 @@
     overflow: hidden;
   }
 
-  .header>img {
+  .header img {
+    width: 100%;
     bottom: 0;
     position: absolute;
     height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
 
   .main__step-container__progress__step-active {

@@ -107,7 +107,7 @@ methodPay.addEventListener("change", () => {
 
   containerTextOnlineService.classList.replace("step-4__bill__additional__texts", "step-4__bill__additional__texts__invisible");
 
-  containerTextOnlineService.classList.replace("step-4__bill__additional__texts", "step-4__bill__additional__texts__invisible");
+  containerTextLargerStorage.classList.replace("step-4__bill__additional__texts", "step-4__bill__additional__texts__invisible");
 
   containerTextCustomizableProfile.classList.replace("step-4__bill__additional__texts", "step-4__bill__additional__texts__invisible");
 })
